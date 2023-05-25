@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup box animation</title>
+</head>
+
+<style>
+    *,::before,::after{
+        padding: 0;
+        margin: 0;
+        box-sizing: inherit;
+    }
+    html{
+        font-size: 62.5%;
+        box-sizing: border-box;
+    }
+    body{
+        background-color: #131839;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .container{
+        /* width: 25rem;
+        color: white;
+        background-color: #19274d;
+        padding: 2rem;
+        border-radius: 1rem;
+        position: relative; */
+    }
+    .btn__toggle{
+        width: 7rem;
+        height: 7rem;
+        background-color: #006748;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        transition: .4s ease;
+    }
+    .btn__toggle.active{
+        background-color: #aa0041;
+        transform-origin: center;
+        animation: turn 3s;
+    }
+    @keyframes turn {
+        50%{
+            transform: translateY(10rem) rotate(-180deg);
+        }
+        100%{
+            transform: translateY(20rem);
+        }
+    }
+    .btn__toggle.active ion-icon{
+        background-color: #aa0041;
+    }
+    .btn__toggle.active ion-icon:first-child{
+        z-index: -1;
+    }
+    .btn__toggle ion-icon{
+        position: absolute;
+        font-size: 6rem;
+        color: white;
+        background-color: #006748;
+        transition: .4s ease;
+    }
+    .btn__toggle ion-icon:first-child{
+        z-index: 10;
+    }
+    .container__content{
+        width: 25rem;
+        color: white;
+        background-color: #19274d;
+        padding: 2rem;
+        border-radius: 1rem;
+        position: relative;
+    }
+    .container__content::after{
+        content: '';
+        position: absolute;
+        width: 4rem;
+        height: 4rem;
+        left: 50%;
+        bottom: -4rem;
+        transform: translateX(-50%);
+        background-color: #19274d;
+        border-bottom-left-radius: 0rem;
+        border-bottom-right-radius: 1000rem;
+    }
+    .container .heading{
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    .container p{
+        font-size: 1.3rem;
+        line-height: 1.5;
+    }
+
+</style>
+
+<body>
+    <div class="container">
+        <div class="btn__toggle">
+            <ion-icon name="add-outline"></ion-icon>
+            <ion-icon name="close-outline"></ion-icon>
+        </div>
+        <!-- <div class="container__content">
+            <h2 class="heading">Heading...</h2>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque veritatis facilis eius, sequi voluptates iure. Vitae velit dolorum at beatae ab distinctio cumque maxime sint, nesciunt, praesentium quis, magni eaque.
+            </p>
+        </div> -->
+    </div>
+
+
+    <script>
+        let btn = document.querySelector('.btn__toggle');
+
+        btn.addEventListener('click', ()=>{
+            btn.classList.toggle('active');
+        })
+    </script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</body>
+</html>
